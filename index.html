@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusFacile UQAC</title>
+
+    <!-- Bibliothèque Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        header {
+            background-color: #0066a1;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #carte {
+            height: 450px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        footer {
+            padding: 15px;
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>CampusFacile UQAC</h1>
+        <p>Découvrez facilement le campus de l'UQAC</p>
+    </header>
+
+    <main>
+        <h2>Bienvenue sur notre carte interactive</h2>
+
+        <p>
+            Cette application aide les étudiants et les visiteurs
+            à se repérer sur le campus de l'UQAC.
+        </p>
+
+        <div id="carte"></div>
+    </main>
+
+    <footer>
+        <p>Projet libre 8WEB101 - UQAC</p>
+    </footer>
+
+    <!-- JavaScript Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Afficher la carte du campus
+        var carte = L.map('carte').setView([48.420, -71.052], 16);
+
+        // Ajouter le fond de carte
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap'
+        }).addTo(carte);
+
+        // Ajouter un marqueur sur le campus
+        var marqueur = L.marker([48.420, -71.052]).addTo(carte);
+
+        // Afficher une information au clic
+        marqueur.bindPopup("Bienvenue sur le campus de l'UQAC !");
+    </script>
+
+</body>
+</html>
